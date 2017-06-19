@@ -19,9 +19,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Converter;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -118,22 +116,6 @@ public class RetrofitClient {
                 .client(okHttpClient);
         retrofit = builder.build();
         return retrofit.create(serviceClass);
-    }
-
-    public <T> void execute(Call<T> call){
-
-        call.enqueue(new Callback<T>() {
-            @Override
-            public void onResponse(Call<T> call, Response<T> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<T> call, Throwable t) {
-
-            }
-        });
-
     }
 
     public class BaseApiResponse {
